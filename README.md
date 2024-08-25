@@ -13,8 +13,7 @@ Last run stats can be checked here [results.md](pref/out/report.md)
 
 ### Requirements
  - [docker](https://docs.docker.com/engine/install/)
- - [artillery]()
-
+ - [artillery](https://www.artillery.io/docs/get-started/get-artillery)
 
 ### Execution
 
@@ -28,7 +27,5 @@ and summary in `pref/out/${docker_image}.json`
 
 # TODO
 
-- total summary of results
-- total plain md file with results
 - nice html page with results
-- more endpoints to tests
+- more complex endpoints to tests

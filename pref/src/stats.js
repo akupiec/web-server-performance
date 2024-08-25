@@ -6,12 +6,9 @@ function generateMarkdownTable(datasets) {
   const dataColPad = 15;
 
   let table = '';
-  const header = `| Metric    | ${Object.keys(datasets)
-    .map((v) => v.padEnd(15))
-    .join(' | ')} |\n`;
-  const separatorRow = `|-----------|${'-----------------|'.repeat(
-    Object.keys(datasets).length
-  )}\n`;
+  const imageNames = Object.keys(datasets).map((v) => v.padEnd(dataColPad));
+  const header = `| Metric    | ${imageNames.join(' | ')} |\n`;
+  const separatorRow = `|-----------|${'-----------------|'.repeat(imageNames.length)}\n`;
   table += header;
   table += separatorRow;
 
