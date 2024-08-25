@@ -2,6 +2,8 @@
 
 Quick and dirty comparison of the performance and resource consumption of various web frameworks under stress.
 
+Last run stats can be checked here [results.md](pref/out/report.md)
+
 # Features
 
 - response times (min, max, avg)
