@@ -12,7 +12,7 @@ function spawnProcess(runProcess, resolve, reject) {
     });
 }
 
-export const runTest = (imageName) => {
+export const runStressTest = (imageName) => {
     return new Promise((resolve, reject) => {
         console.log(`Running test!`);
 

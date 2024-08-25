@@ -1,19 +1,26 @@
-import {buildAndRunDockerImage, stopAndRemoveDockerImage} from "./docker.js";
-import {runTest} from "./test.js";
-import {showStats, startMonitoring} from "./resources.js";
-import {genStats} from "./stats.js";
+import {buildAndRunDockerImage, stopAndRemoveDockerImage} from "./src/docker.js";
+import {saveHardwareUsage, startMonitoringHardware} from "./src/resources.js";
+import {runStressTest} from "./src/test.js";
+import {saveImageSummary} from "./src/stats.js";
 
 
 async function runServerAndTest(imageName) {
     await buildAndRunDockerImage(imageName, '../' + imageName)
-    startMonitoring('c_' + imageName, 500);
-    await runTest(imageName);
-    await showStats(imageName);
+    startMonitoringHardware('c_' + imageName, 500);
+    await runStressTest(imageName);
+    await saveHardwareUsage(imageName);
     await stopAndRemoveDockerImage(imageName)
-    genStats(imageName)
+    saveImageSummary(imageName)
 }
 
-await runServerAndTest('go-fiber');
-await runServerAndTest('go-gin');
-await runServerAndTest('node-fastify');
-await runServerAndTest('python-fastapi');
+const imagesToTest = ['go-fiber', 'go-gin', 'node-fastify', 'python-fastapi'];
+
+for (const img of imagesToTest) {
+    await runServerAndTest(img);
+}
+
+function saveSummary(imagesToTest) {
+
+}
+
+saveSummary(imagesToTest);
